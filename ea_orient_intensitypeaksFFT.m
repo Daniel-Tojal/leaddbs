@@ -1,6 +1,21 @@
 function [peak,sprofil] = ea_orient_intensitypeaksFFT(intensity,noPeaks)
-    %% this function detects 'noPeaks' number of intensity peaks. peaks are constrained to be at 360°/noPeaks angles to each other.
-    %% Function runs a noPeaks * (360°/noPeaks) array over the intensity-profile and finds the angle at which the sum of all peaks is highest.
+% This function detects 'noPeaks' number of intensity peaks. 
+% Peaks are constrained to be at 360Â°/noPeaks angles to each other.
+% Function runs a noPeaks * (360Â°/noPeaks) array over the intensity-profile 
+% and finds the angle at which the sum of all peaks is highest.
+% 
+% USAGE:
+%
+%    [peak,sprofil] = ea_orient_intensitypeaksFFT(intensity,noPeaks)
+%
+% INPUTS:
+%    intensity:
+%    noPeaks:
+%
+% OUTPUTS:
+%    peak:
+%    sprofil:
+
     fftint = fft(intensity);
     fftpart = fftint(noPeaks+1);
     amplitude = abs(fftpart);
