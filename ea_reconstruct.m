@@ -3,40 +3,33 @@ function [coords,trajvector,trajectory,tramat]=ea_reconstruct(patientname,option
 % lead trajectory for one side (left/right) of the MR-data. It reads two MR
 % images from a folder called 'patientname' and iteratively reconstructs a
 % line in 3D-space that best describes the electrode trajectory.
-% __________________________________________________________________________________
 %
-% Inputs:   patientname       String of folder and root of filenames. Files
-%                             should be called e.g.
-%                             'MustermannMax/MustermannMax_tra_brain_A3_final.nii'
-%                             and
-%                             'MustermannMax/MustermannMax_cor_brain_A3_final_opt.nii'
-%                             and reside within the folder specified by
-%                             options.root. Note that an exact
-%                             normalization into MNI-space is crucial for
-%                             Lead to work correctly.
-%           options           Struct containing various options, see e.g.
-%                             ea_defaultoptions.m
-%           side              which side of the brain shall be
-%                             reconstructed. 1 > right hemisphere, 2 > left hemisphere.
-% ----------------------------------------------------------------------------------
+% USAGE:
 %
-% Outputs:  coords            8x3 vector of electrode coordinates in
-%                             mm-representations within MNI-space (if
-%                             MR-images have been normalized correctly).
-%           trajvector        3 element vector describing the traversing
-%                             direction of the lead trajectory.
-%           trajectory        nx3 vector describing the fitted line of the
-%                             trajectory.
-%           tramat            4x4 matrix describing the normalization of
-%                             MR-images. This is used to reconstruct the
-%                             distances of the electrode contacts in
-%                             MNI-space (since the distance has changed
-%                             from e.g. 2mm in native space due to
-%                             normalization).
+%    [coords,trajvector,trajectory,tramat]=ea_reconstruct(patientname,options,side,lnii)
 %
-% __________________________________________________________________________________
-% Copyright (C) 2014 Charite University Medicine Berlin, Movement Disorders Unit
-% Andreas Horn
+% INPUTS:
+%    patientname:       String of folder and root of filenames. Files should be called e.g. 
+%                       'MustermannMax/MustermannMax_tra_brain_A3_final.nii'
+%                       and 'MustermannMax/MustermannMax_cor_brain_A3_final_opt.nii' and reside 
+%                       within the folder specified by options.root. Note that an exact normalization 
+%                       into MNI-space is crucial for Lead to work correctly.
+%    options:           Struct containing various options, see e.g. ea_defaultoptions.m
+%    side:              which side of the brain shall be reconstructed. 1 > right hemisphere, 
+%                       2 > left hemisphere.
+%
+% OUTPUTS:
+%    coords:            8x3 vector of electrode coordinates in mm-representations within MNI-space (if
+%                       MR-images have been normalized correctly).
+%    trajvector:        3 element vector describing the traversing direction of the lead trajectory.
+%    trajectory:        nx3 vector describing the fitted line of the trajectory.
+%    tramat:            4x4 matrix describing the normalization of MR-images. This is used to 
+%                       reconstruct the distances of the electrode contacts in MNI-space 
+%                       (since the distance has changed from e.g. 2mm in native space due to normalization).
+%
+% ..AUTHOR:
+%
+%    Andreas Horn: Original File
 
 options.axiscontrast=3;
 
