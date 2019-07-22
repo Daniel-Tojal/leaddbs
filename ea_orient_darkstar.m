@@ -1,7 +1,21 @@
 function dir_angles = ea_orient_darkstar(roll,pitch,yaw,dirlevel)
-vizz = 0;
-%% create vectors symbolizing the gaps between directional contacts at 60, 180 and 300 degrees
+% Create vectors symbolizing the gaps between directional contacts at 60, 180 and 300 degrees
 % and transform them to match lead trajectory and directional level
+%
+% USAGE:
+%
+%    dir_angles = ea_orient_darkstar(roll,pitch,yaw,dirlevel)
+%
+% INPUTS:
+%    dir_angles: 
+%
+% OUTPUTS:
+%    roll:
+%    pitch:
+%    yaw:
+%    dirlevel:
+
+vizz = 0;
 dirlevel = dirlevel(1:3);
 
 ven = [0 0.65 -0.75 ]';
@@ -18,8 +32,8 @@ dor300 = M * dor;
 
 %% calculate intersecting points between vec60/180/300 and the z-plane through the dir-level artifact
 vec60 = (dor60-ven60) / norm(dor60-ven60);              % unitvector from ven60 to dor60
-dir_ven60 = dirlevel + ven60;                          % ventral point at 60° from the directional level
-dir_dor60 = dirlevel + dor60;                          % dorsal point at 60° from the directional level
+dir_ven60 = dirlevel + ven60;                          % ventral point at 60Â° from the directional level
+dir_dor60 = dirlevel + dor60;                          % dorsal point at 60Â° from the directional level
 dir_x60 = (dirlevel(3) - dir_ven60(3)) / vec60(3);      % factor x of how many unitvectors dir_ven60 is distanced from the dirlevel in the z-dimension
 dir_60 = dir_ven60 + (dir_x60 .* vec60);                % intersecting point of the line from ven60 to dor60 withe the dirlevel plane in the z-dimension
 
