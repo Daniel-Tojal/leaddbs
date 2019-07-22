@@ -13,8 +13,8 @@ function [angle, intensity,vectornew] = ea_orient_intensityprofile(artifact,cent
 %
 % OUTPUTS:
 %    angle:
-%    intensity
-%    verctornew
+%    intensity:
+%    vectornew:
 
 vector = [0 1] .* (radius / pixdim(1));
 vectornew = [];
